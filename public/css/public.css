@@ -1,0 +1,134 @@
+
+
+.content-left{
+    padding: 40px 0;
+}
+.content-con img{
+    display: block;
+    margin:0 0 20px 0;
+}
+
+.footer{
+    height: 140px;
+    background: #23282d;
+    margin-top: 40px;
+}
+.footer p span{
+    float: left;
+    width: 32px;
+    height: 32px;
+}
+.footer p span:first-child{
+    background: url("../images/weibo.png");
+    margin-right: 20px;
+}
+.footer p span:last-child{
+    background: url("../images/Git.png");
+}
+.footer-top{
+   padding:20px 0 30px 0;
+
+}
+.footer-top p{
+    width: 84px;
+    height: 32px;
+    margin: 0 auto;
+}
+.footer p{
+    color: #8a8c8f;
+    line-height: 30px;
+}
+nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+     background-color: transparent;
+    border-color: transparent;
+}
+/*内容css end*/
+.content-con-right{
+    padding: 5px 15px;
+}
+.content-con-right h4{
+    font-size:20px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    height: 26px;
+    overflow: hidden;
+}
+.content-con-right strong{
+    margin-right: 10px;
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    background: #00a2ff;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+}
+.content-con-right strong b{
+    width: 80px;
+    height: 26px;
+    overflow: hidden;
+}
+.content-con-right em{
+    display: block;
+    width: 0;
+    height: 0;
+    border-top:5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #00a2ff;
+    position: absolute;
+    top: 7px;
+    right: -5px;
+}
+.content-con-right p{
+    font-size: 16px;
+    line-height: 20px;
+    height:80px;
+    text-indent: 2em;
+    overflow: hidden;
+}
+.content-con-right {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+.content-con h5{
+    padding: 10px 20px 10px 30px;
+    border-bottom: 1px solid #ededed;
+    border-top: 1px solid #f3f3f3;
+    float: left;
+    width: 100%;
+}
+.content-con h5 b{
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: #2aabd2;
+    margin-right: 10px;
+}
+.content-con h5 span{
+    display: block;
+    float: left;
+    margin-right: 20px;
+    font-size: 12px;
+}
+.content-con h5 b.calendar{
+    background: url("../images/calendar.png");
+}
+.content-con h5 b.review{
+    background: url("../images/review.png");
+}
+.content-con h5 b.read{
+    background: url("../images/read.png");
+}
+.content-con h5 b.praise{
+    background: url("../images/parise.png");
+}
+.content-con h5 a{
+    display: block;
+    float: right;
+    font-size: 12px;
+    width: 70px;
+    height: 16px;
+    line-height: 16px;
+    background: url("../images/more.png") no-repeat 54px 0;
+}

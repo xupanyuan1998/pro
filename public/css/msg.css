@@ -1,15 +1,10 @@
-.content-cen p.int {
-    text-align: left;
-    font-size: 16px;
-    line-height: 25px;
-    padding-left: 20px;
-}
 
 .content-cen {
     padding-left: 0px;
     border-left: 1px solid #f6f6f6;
     border-bottom: 1px solid #f6f6f6;
 }
+
 .content-cen h3 {
     padding-bottom: 20px;
 }
@@ -39,21 +34,22 @@
 
 .dashang {
     margin-top: 20px;
-    padding-left: 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column
 }
 
 .dashang img {
-    margin: 0 auto;
-    width: 300px;
-    height: 450px;
+    margin-top: 20px;
+    width: 100%;
     align-self: center;
 }
 
 .dashang p {
-    margin: 20px 0;
     font-size: 16px;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 20px;
 }
 
 .share {
@@ -121,4 +117,75 @@
 .share button.share-but:hover span,
 .share button.dashang-but:hover span {
     color: #fff;
+}
+
+.message {
+    margin-top: 20px;
+    border: 1px solid #f6f6f6;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.message div img {
+    height: 60px;
+    width: 60px;
+    display: block;
+    border-radius: 50%;
+    float: left;
+}
+
+.message div h4 {
+    margin-top: 5px;
+    margin-left: 10px;
+    line-height: 25px;
+    color: #a6a6a6;
+}
+
+.message div span {
+    margin-top: 5px;
+    margin-left: 10px;
+    display: block;
+    color: #a6a6a6;
+}
+
+.message p {
+    float: left;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.page-f li a {
+    background: #eeeeee;
+    margin-right: 20px;
+    color: #666;
+}
+
+.page-f li a:hover {
+    background: #2aabd2;
+    color: #fff;
+    font-weight: bold;
+}
+
+.review {
+    border: 1px solid #f9f9f9;
+    padding: 10px 20px;
+}
+
+.review h4 {
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+.review textarea {
+    width: 100%;
+    border: solid 1px #999;
+    padding: 15px;
+    color: #eee;
+    margin-bottom: 20px;
+}
+
+.review button {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
 }

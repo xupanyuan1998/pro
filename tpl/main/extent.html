@@ -6,48 +6,20 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>首页</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script src="../js/jquery.1.10.2.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <link rel="stylesheet" href="../css/public.css">
-    <script src="../js/index.js"></script>
-    <link rel="stylesheet" href="../css/public-head.css">
+    <link rel="stylesheet" href="public/css/bootstrap.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <script src="public/js/jquery.1.10.2.min.js"></script>
+    <script src="public/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="public/css/public.css">
+    <script src="public/js/index.js"></script>
+    <link rel="stylesheet" href="public/css/public-head.css">
 </head>
 <body>
 <div>
     <div class="nav-top hidden-xs hidden-xm">
         <div class="nav-top ">
             <div class="container nav-header ">
-                <img src="../images/logo.png" alt="Logo" class="logo">
-                <!--<ul class="nav-left">
-                   <li class="fl"><a href="javascript:;">首页</a></li>
-                   <li class="fl web-script">
-                       <a href="javascript:;" class="web-nav">前端</a>
-                       <ul class="web">
-                           <li></li>
-                           <li>javascript</li>
-                           <li>webpack</li>
-                           <li>Vue</li>
-                           <li>正则</li>
-                           <li>异步</li>
-                       </ul>
-                   </li>
-                   <li class="fl nav-a">
-                       <a href="javascript:;" class="article-nav">文章</a>
-                       <ul class="article">
-                           <li></li>
-                           <li>感悟</li>
-                           <li>随笔</li>
-                           <li>悬疑</li>
-                       </ul>
-                   </li>
-                   <li class="fl"><a href="javascript:;">打赏</a></li>
-                   <li class="fl"><a href="javascript:;">留言</a></li>
-                   <li class="fl"><a href="javascript:;">注册</a></li>
-                   <li class="fl"><a href="javascript:;">找回密码</a></li>
-                </ul>-->
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <img src="../../public/images/logo.png" alt="Logo" class="logo">
                 <ul class="nav navbar-nav nav-left">
                     <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown nav-script">
@@ -74,7 +46,8 @@
                     </li>
                     <li><a href="#">打赏</a></li>
                     <li><a href="#">留言</a></li>
-                    <li><a href="#">注册</a></li>
+                    <li><a href="/api/user/log">登录</a></li>
+                    <li><a href="/api/user/reg">注册</a></li>
                     <li><a href="#">找回密码</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -87,50 +60,29 @@
 </div><!--头部导航-->
 <div class="container content-left">
     <div class="fl col-lg-7 ">
-        <div class="content-con row">
-            <div class="col-lg-5 fl col-xs-12 col-xm-12"><img class=" col-lg-12 col-xs-12 col-xm-12"
-                                                              src="../images/web-2.png" alt="logo"></div>
-            <div class=" fl col-lg-1 hidden-xs hidden-xm"></div>
-            <div class="content-con-right col-lg-7  fl  col-xs-12 col-xm-12">
-                <h4><strong class="fl hidden-xs hidden-xm"> <b class="">javascript </b><em></em></strong><a
-                        href="javascript:;">javascript编码规范</a>
-                </h4>
-                <p>
-                    命名规范 目录
-                    命名规范局部变量命名规范函数命名引用References对所有的引用使用const；不要使用var。如果一定需要可变动引用，使用let代替var。对象Objects使用字面量语法创建对....
-                    命名规范 目录 命名规范局部变量命名规范函数命名引用 命名规范 目录 命名规范局部变量命名规范函数命名引用 命名规范 目录 命名规范局部变量命名规范函数命名引用 命名规范 目录
-                    命名规范局部变量命名规范函数命名引用 命名规范 目录 命名规范局部变量命名规范函数命名引用 命名规范 目录 命名规范局部变量命名规范函数命名引用 命名规范 目录
-                    命名规范局部变量命名规范函数命名引用
-                </p>
-            </div>
-            <h5 class="col-lg-12 col-xs-12 col-xm-12">
-                <b class=" calendar "></b>
-                <span>2019年2月23日</span>
-                <b class="review"></b>
-                <span>0条评论</span>
-                <b class="read"></b>
-                <span>126人阅读</span>
-                <b class="praise"></b>
-                <span>0人点赞</span>
-                <a href="javascript:;">阅读全文</a>
-            </h5>
-        </div>
+        {% block content-left %}
+        {% endblock %}
     </div><!--左边内容-->
     <div class="fl col-lg-1   hidden-md hidden-xs hidden-xm hidden-sm"></div>
     <div class="fl col-lg-3  hidden-md hidden-xs hidden-xm hidden-sm">
-        <div class="text-center right-content ">
+        {% if name.username %}
+        <div class="text-center right-content  admin-page" id="log-success">
+            {% if name.isAdmin %}
+            <p>您好admin ：您是管理员 <a href="/admin/userslist">点击这里进入管理页面</a></p>
+            {% else %}
+            <p>欢迎回来 </p>
+            {% endif %}
+            <span id="logout">退出</span>
+        </div>
+        {% else %}
+        <div class="text-center right-content " id="denglu">
             <h4 class="text-center">用户您好！请先登录！</h4>
             <div class="admin">
-                <a href="javascript:;">登录</a>
-                <a href="javascript:;">注册</a>
+                <a href="/api/user/log" class="btn btn-primary btn-lg text-center" id="log">登录</a>
+                <a href="/api/user/reg" class="btn btn-primary btn-lg text-center" id="zhuce">注册</a>
             </div>
         </div>
-        <div class="music">
-            <h4><b>音乐</b></h4>
-            <div class="music-content">
-                <audio src="../images/music.mp3" controls style="width: 100%"></audio>
-            </div>
-        </div>
+        {% endif %}
         <div class="music">
             <h4><b>站内搜索</b></h4>
             <div class="music-content">
@@ -140,7 +92,7 @@
         <div class="music">
             <h4><b>微信公众号</b></h4>
             <div class="music-content">
-                <img src="../images/public.png" alt="">
+                <img src="../../public/images/public.png" alt="">
             </div>
         </div>
         <div class="music">
@@ -205,16 +157,17 @@
     <li class="con-nav"><a href="javascript:;">悬疑</a></li>
     <li><a href="javascript:;">打赏</a></li>
     <li><a href="javascript:;">留言</a></li>
-    <li><a href="javascript:;">注册</a></li>
+    <li><a href="/api/user/reg">注册</a></li>
+    <li><a href="/api/user/log">登录</a></li>
     <li><a href="javascript:;">找回密码</a></li>
 </ul><!-- 小屏幕侧边导航-->
 <div class="icn">
-    <div class="int hidden-xs hidden-xm"><img src="../images/int.png" alt="int"></div>
+    <div class="int hidden-xs hidden-xm"><img src="../../public/images/int.png" alt="int"></div>
     <div class="wechat hidden-xs hidden-xm">
-        <img src="../images/wechat.png" alt="wechat">
-        <img class="card" src="../images/public.png" alt="">
+        <img src="../../public/images/wechat.png" alt="wechat">
+        <img class="card" src="../../public/images/public.png" alt="">
     </div>
-    <div class="top"><img src="../images/top.png" alt="top"></div>
+    <div class="top"><img src="../../public/images/top.png" alt="top"></div>
 </div>
 <div id="nav" class="hidden-md hidden-lg hidden-xm hidden-sm"></div>
 
@@ -223,7 +176,5 @@
     <p class="text-center">COPYRIGHT 2019 陌上寒 .ALLRIGHTS RESERVEND</p>
     <p class="text-center">京ICP备16036924号</p>
 </div>
-
-
 </body>
 </html>

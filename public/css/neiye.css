@@ -1,14 +1,22 @@
-.content-cen {
-    padding-left: 40px;
+
+.content-cen h3 {
+    width: 100%;
+    text-align: center;
 }
 
-.content-cen h5 {
+.warp-con {
+    display: flex;
+    flex-direction: column;
+}
+
+.warp-con h5 {
     overflow: hidden;
     text-align: center;
     height: 16px;
     font-size: 12px;
     line-height: 16px;
     color: #ccc;
+    align-self: center;
 }
 
 .content-cen h5 b {
@@ -29,6 +37,11 @@
     overflow: hidden;
 }
 
+.neiye {
+    border: 1px solid #f5f5f5;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 .rili {
     background: url("../images/calendar.png");
 }
@@ -36,44 +49,194 @@
 .view {
     background: url("../images/review.png");
 }
-
 .read {
     background: url("../images/read.png");
 }
-
 .zan {
     background: url("../images/parise.png");
 }
 
-.content-cen h5 span {
+.warp-con h5 span {
     display: block;
     float: left;
     margin-right: 10px;
 }
 
-.content-cen p {
-    float: left;
+.int-p {
     width: 100%;
     text-align: left;
     font-size: 16px;
-    padding: 20px 0;
+    line-height: 40px;
+    padding-left: 20px;
 }
 
-.content-cen h4 {
+int:hover {
+    background: #fff;
+}
+
+.neiye h4 {
     position: relative;
-    float: left;
-    width: 100%;
+    padding: 10px 0;
+    background: rgba(30, 67, 11, 0.48);
+    height: 40px;
+    margin-top: 20px;
     text-align: left;
-    height: 20px;
 }
-
 .content-cen h4 b {
     display: block;
-    height: 20px;
-    width: 10px;
-    background: royalblue;
     position: absolute;
+    width: 10px;
+    height: 40px;
+    background: steelblue;
+    left: 0;
     top: 0;
-    left: -20px;
+}
 
+.content-cen h4 span {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.mulu {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #999;
+    background: #f9f9f9;
+    margin: 20px auto;
+}
+
+.mulu h5 {
+    font-size: 20px;
+}
+
+.mulu-1 {
+    padding-left: 20px;
+}
+
+.mulu-2 {
+    padding-left: 40px;
+}
+
+.mulu ul li a {
+    line-height: 30px;
+    text-decoration: none;
+}
+
+.daima {
+    padding: 10px 20px;
+    background: #252932;
+}
+
+.daima img {
+    width: 100%;
+}
+
+.content-cen h3.biaoti {
+    text-align: center;
+}
+
+.content-cen h3 {
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.content-cen h6 {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.dianzan {
+    display: block;
+    border: 1px solid #e87461;
+    padding: 5px 20px;
+    margin: 0 auto;
+    background: #fff;
+    outline: none;
+}
+
+.dianzan b {
+    float: left;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background: url("../images/zan1.png");
+}
+
+.dianzan span {
+    display: block;
+    float: left;
+    color: #e87461;
+}
+
+.dianzan:hover {
+    background: #e87461;
+}
+
+.dianzan:hover b {
+    background: url("../images/zan2.png");
+}
+
+.dianzan:hover span {
+    color: #fff;
+}
+
+.message {
+    margin-top: 20px;
+    border: 1px solid #f6f6f6;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.message div img {
+    height: 60px;
+    width: 60px;
+    display: block;
+    border-radius: 50%;
+    float: left;
+}
+
+.content-cen .message div h4 {
+    margin-top: 5px;
+    margin-left: 10px;
+    line-height: 25px;
+    color: #a6a6a6;
+}
+
+.message div span {
+    margin-top: 5px;
+    margin-left: 10px;
+    display: block;
+    color: #a6a6a6;
+}
+
+.message p {
+    float: left;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.review {
+    border: 1px solid #f9f9f9;
+    padding: 10px 20px;
+}
+
+.review h4 {
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+.review textarea {
+    width: 100%;
+    border: solid 1px #999;
+    padding: 15px;
+    color: #eee;
+    margin-bottom: 20px;
+}
+
+.review button {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
 }

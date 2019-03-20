@@ -132,3 +132,7 @@ nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     line-height: 16px;
     background: url("../images/more.png") no-repeat 54px 0;
 }
+
+.pagination li a {
+    margin-right: 10px;
+}

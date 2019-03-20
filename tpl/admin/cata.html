@@ -1,0 +1,43 @@
+{% extends 'category.html' %}
+{% block shuju %}
+<table style="margin-top: 20px" class="text-center table table-striped table-hover">
+    <tr>
+        <td>用户名</td>
+        <td>ID</td>
+        <td>操作</td>
+    </tr>
+    {% for num in name %}
+    <tr class="box">
+        <td>{{ num.name}}</td>
+        <td class="oldid">{{ num._id.toString() }}</td>
+        <td>
+            <a class="btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">修改</a>
+            <a href="javascript:;">删除</a>
+            <input type="hidden" class="oldva" value="{{ num._id.toString() }}">
+            <input type="hidden" class="oldv" value="{{ num.name}}">
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLabel">新分类</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">类别</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                    <p class="text-center" id="place" style="display: none">fsdegsg</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="sub">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -16,6 +16,9 @@ img.ba {
     /*background: url("../images/logo.png");*/
 }
 
+.active {
+    background: #ed219bb3;
+}
 .fade.in {
     display: none;
 }

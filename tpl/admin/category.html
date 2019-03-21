@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="../../public/css/bootstrap.min.css">
     <script src="../../public/js/jquery.1.10.2.min.js"></script>
     <script src="../../public/js/bootstrap.js"></script>
+    <script src="../../public/js/Confirm.js"></script>
     <link rel="stylesheet" href="../../public/css/admin1.css">
+    <link rel="stylesheet" href="../../public/css/Confirm.css">
 </head>
 <body>
 <img class="ba" src="../../public/images/admin1.jpg" alt="">
@@ -21,11 +23,11 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/admin/userslist">用户管理<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="/admin/userslist">用户管理<span class="sr-only">(current)</span></a></li>
                 <li><a href="javascript:;">文章管理</a></li>
                 <li><a href="javascript:;">新增文章</a></li>
                 <li><a href="/admin/userslist/cata" id="cata">分类管理</a></li>
-                <li><a href="javascript:;" id="addcata">新增分类</a></li>
+                <li id="addcata"><a href="/admin/userslist/addcata">新增分类</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right ">
                 <li><a href="#">admin</a></li>
@@ -46,15 +48,12 @@
     </div>
 </div>
 <script>
-	$('#addcata').on('click', function () {
-		$('#content-1').html('');
-		var odiv = $('<div class="form-group"><label for="exampleInputEmail1">分类类别</label><input type="text" class="form-control" id="txt" placeholder="类别"></div><p class="text-center  btn-warning" style="display: none" id="bg-d">eryhgrehreh</p><b class="btn btn-default" id="btn">提交</b>');
-		$('#content-1').prepend(odiv);
-		$('#page').fadeOut();
-		$('#content-1').find('#btn').on('click', function () {
+    $('.navbar-nav').find('li').on('click', function () {
+        $(this).addClass('active').sibling().removeClass('active');
+    })
+    $('#btn-sub').on('click', function () {
 			var txt = $('#txt').val();
 			if (txt == '') {
-				console.log(1)
 				$('#content-1').find('#bg-d').html('分类名不能为空').fadeIn(1200).fadeOut();
 			} else {
 				$.ajax({
@@ -76,14 +75,12 @@
 					}
 				})
 			}
-		});
 	});//新增分类页面
 	//修改分类
 	var oldvalue = '', id = '';
 	$('.box').find('a:nth-child(1)').on('click', function () {
 		oldvalue = $(this).parent().find('input.oldv').val();
 		id = $(this).parent().find('input.oldva').val();
-		console.log(oldvalue, id)
 	});
 	$('#sub').on('click', function () {
 		var txt = $('#recipient-name').val();
@@ -109,7 +106,29 @@
 
 			})
 		}
-	})
+    });
+    //分类删除
+    $('.box').find('a:nth-child(2)').on('click', function () {
+        id = $(this).parent().find('input.oldva').val();
+        var txt = '您确定要删除吗？';
+        var ok = window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.confirm, {
+            onOk: function () {
+                $.ajax({
+                    type: 'get',
+                    url: '/admin/userslist/catadel',
+                    data: {
+                        id: id
+                    },
+                    success: function (res) {
+                        if (res.code == 8) {
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+        });
+
+    })
 </script>
 </body>
 </html>

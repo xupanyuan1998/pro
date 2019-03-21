@@ -7,7 +7,7 @@ var admin = express.Router();
 admin.get('/userslist', function (req, res) {
 	var limit = 20,
 		page = Number(req.query.page) || 1;//设置当前在第几页
-	user.count().then(function (info) {
+    user.countDocuments().then(function (info) {
 		var pages = Math.ceil(info / limit);
 		var skip = (page - 1) * limit;
 		user.find().limit(limit).skip(skip).then(function (info2) {
@@ -21,6 +21,10 @@ admin.get('/userslist/cata', function (req, res) {
 		res.render('./admin/cata.html', {name: info});
 	})
 });
+//新增分类页面
+admin.get('/userslist/addcata', function (req, res) {
+    res.render('./admin/addcata.html', {})
+})
 //新增分类
 admin.post('/userslist/addcata', function (req, res) {
 	var name = req.body.name;
@@ -58,13 +62,23 @@ admin.get('/userslist/modcata', function (req, res) {
 			res.send(json);
 			return
 		} else {
-			return category.updateOne({_id: id}, {name: name})
+            return category.update({_id: id}, {name: name})
 		}
 	}).then(function (newinfo) {
-		console.log(newinfo)
 		json.code = 4;
 		json.msg = '修改成功';
 		res.send(json)
 	})
-})
+});
+//删除分类
+admin.get('/userslist/catadel', function (req, res) {
+    id = req.query.id;
+    category.deleteOne({
+        _id: id
+    }).then(function (info) {
+        json.code = 8;
+        json.msg = '删除成功';
+        res.send(json)
+    })
+});
 module.exports = admin;

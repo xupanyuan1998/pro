@@ -193,9 +193,11 @@ textarea {
 .content-left {
     padding-top: 50px;
 }
+
 .content-con-right {
     padding: 5px 15px;
 }
+
 .content-con-right h4 {
     font-size: 20px;
     margin-bottom: 15px;
@@ -359,6 +361,7 @@ textarea {
     background: #78bfff;
     color: #fff;
 }
+
 .page li a {
     margin-right: 10px;
 }
@@ -400,6 +403,7 @@ textarea {
     float: none;
     border: none;
 }
+
 .music-content {
     padding: 30px 0;
     overflow: hidden;
@@ -456,6 +460,7 @@ textarea {
 .admin-page button {
     padding: 5px;
 }
+
 /*公共内容右边部分*/
 .footer {
     height: 140px;
@@ -580,4 +585,5 @@ nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
 .con-nav {
     padding-left: 30px;
 }
+
 /*小屏幕侧边栏*/

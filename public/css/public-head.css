@@ -105,60 +105,9 @@ textarea {
     color: #fff;
     text-decoration: none;
 }
-
-.nav-left ul li:first-child {
-    width: 0;
-    height: 0;
-    border-bottom: 8px solid #fff;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-    position: absolute;
-    top: -8px;
-    left: 40%;
-}
-
-.nav-left ul {
-    background: #fff;
-    position: relative;
-    border-radius: 10px;
-    float: left;
-}
-
-.nav-script {
-    position: relative;
-}
-
-.nav-left ul.web {
-    width: 160px;
-    height: 230px;
-    position: absolute;
-    top: 50px;
-    left: -10px;
-    border-radius: 10px;
-}
-
-.nav-left ul.article {
-    width: 160px;
-    height: 138px;
-    position: absolute;
-    left: -15px;
-    top: 50px;
-}
-
-.nav-left ul li {
-    width: 160px;
-    height: 46px;
-    list-style: none;
-    text-align: center;
-    line-height: 46px;
-    font-size: 14px;
-    color: #848484;
-}
-
 .nav-left > li > a:hover {
     background: none;
 }
-
 .blog-user {
     width: 180px;
     height: 106px;
@@ -166,29 +115,79 @@ textarea {
     top: 36%;
     left: 42%;
 }
-
 .blog-user h1,
 .blog-user p {
     width: 180px;
     color: #fff;
     text-align: center;
 }
-
 .blog-user h1 {
     height: 60px;
     line-height: 60px;
 }
-
 .blog-user p {
     height: 46px;
     line-height: 46px;
     font-size: 22px;
 }
-
 .right-nav {
     background: #fff;
 }
 
+.nav-script {
+    width: 550px;
+    height: 40px;
+    float: right;
+    border-radius: 10px;
+}
+
+.nav-script a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-script div {
+    border-radius: 10px;
+    float: left;
+    text-align: center;
+    width: 14%;
+    height: 100%;
+}
+
+.nav-script div h4 {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.nav-script div h4 a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-script .nav-main ul {
+    width: 100%;
+    height: 400%;
+    display: none;
+}
+
+.nav-script .nav-main:hover {
+    background-color: pink;
+}
+
+.nav-script .nav-main ul li {
+    width: 100%;
+    height: 19%;
+    line-height: 31px;
+    color: #fff;
+}
+
+.nav-script .nav-main ul li:hover {
+    background-color: #ccc;
+    border-radius: 10px;
+}
 /*公共头部*/
 .content-left {
     padding-top: 50px;

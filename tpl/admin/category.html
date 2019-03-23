@@ -16,33 +16,35 @@
 </head>
 <body>
 <img class="ba" src="../../public/images/admin1.jpg" alt="">
-<div class="main col-xs-12 col-xm-12">
+<div class="main ">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/index">首页 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/admin/userslist">用户管理</a></li>
+                    <li><a href="/admin/userslist/cata">分类管理</a></li>
+                    <li><a href="/admin/userslist/addcata">新增分类</a></li>
+                    <li><a href="/admin/userslist">文章管理</a></li>
+                    <li><a href="/admin/userslist/addarticle">新增文章</a></li>
+                </ul>
+                /
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/index"><img src="../../public/images/logo.png" alt=""></a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/admin/userslist">用户管理<span class="sr-only">(current)</span></a></li>
-                <li><a href="javascript:;">文章管理</a></li>
-                <li><a href="javascript:;">新增文章</a></li>
-                <li><a href="/admin/userslist/cata" id="cata">分类管理</a></li>
-                <li id="addcata"><a href="/admin/userslist/addcata">新增分类</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right ">
-                <li><a href="#">admin</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">用户管理<span class="caret"></span></a>
-                    <ul class="dropdown-menu ">
-                        <li><a class="text-center" href="#">文章管理</a></li>
-                        <li><a class="text-center" href="#">新增文章</a></li>
-                        <li><a class="text-center" href="#">分类管理</a></li>
-                        <li><a class="text-center" href="#">新增分类</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
         {% block shuju%}
         {% endblock %}
     </div>
@@ -52,60 +54,59 @@
         $(this).addClass('active').sibling().removeClass('active');
     })
     $('#btn-sub').on('click', function () {
-			var txt = $('#txt').val();
-			if (txt == '') {
-				$('#content-1').find('#bg-d').html('分类名不能为空').fadeIn(1200).fadeOut();
-			} else {
-				$.ajax({
-					url: '/admin/userslist/addcata',
-					type: 'post',
-					data: {
-						name: txt
-					},
-					success: function (res) {
-						if (res.code === 6) {
-							$('#content-1').find('#bg-d').html('该分类名已存在').fadeIn(1200).fadeOut();
-						} else if (res.code === 7) {
-							$('#content-1').find('#bg-d').html('添加成功').fadeIn(1200).fadeOut();
-							$('#txt').val('');
-						}
-					},
-					error: function (err) {
-						console.log(err)
-					}
-				})
-			}
-	});//新增分类页面
-	//修改分类
-	var oldvalue = '', id = '';
-	$('.box').find('a:nth-child(1)').on('click', function () {
-		oldvalue = $(this).parent().find('input.oldv').val();
-		id = $(this).parent().find('input.oldva').val();
-	});
-	$('#sub').on('click', function () {
-		var txt = $('#recipient-name').val();
-		if (txt == '') {
-			$('#place').html('分类名不能为空').fadeIn(1200).fadeOut();
-		} else if (txt == oldvalue) {
-			$('#place').html('新类名不能和之前一样').fadeIn(1200).fadeOut();
-		} else {
-			$.ajax({
-				url: '/admin/userslist/modcata',
-				type: 'get',
-				data: {
-					name: txt,
-					id: id
-				},
-				success: function (succ) {
-					if (succ.code == 7) {
-						$('#place').html(succ.msg).fadeIn(1200).fadeOut();
-					} else if (succ.code == 4) {
-						window.location.reload();
-					}
-				}
-
-			})
-		}
+        var txt = $('#txt').val();
+        if (txt == '') {
+            $('#content-1').find('#bg-d').html('分类名不能为空').fadeIn(1200).fadeOut();
+        } else {
+            $.ajax({
+                url: '/admin/userslist/addcata',
+                type: 'post',
+                data: {
+                    name: txt
+                },
+                success: function (res) {
+                    if (res.code === 6) {
+                        $('#content-1').find('#bg-d').html('该分类名已存在').fadeIn(1200).fadeOut();
+                    } else if (res.code === 7) {
+                        $('#content-1').find('#bg-d').html('添加成功').fadeIn(1200).fadeOut();
+                        $('#txt').val('');
+                    }
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+        }
+    });//新增分类页面
+    //修改分类
+    var oldvalue = '', id = '';
+    $('.box').find('a:nth-child(1)').on('click', function () {
+        oldvalue = $(this).parent().find('input.oldv').val();
+        id = $(this).parent().find('input.oldva').val();
+    });
+    $('#sub').on('click', function () {
+        var txt = $('#recipient-name').val();
+        if (txt == '') {
+            $('#place').html('分类名不能为空').fadeIn(1200).fadeOut();
+        } else if (txt == oldvalue) {
+            $('#place').html('新类名不能和之前一样').fadeIn(1200).fadeOut();
+        } else {
+            $.ajax({
+                url: '/admin/userslist/modcata',
+                type: 'get',
+                data: {
+                    name: txt,
+                    id: id
+                },
+                success: function (succ) {
+                    if (succ.code == 7) {
+                        $('#place').html(succ.msg).fadeIn(1200).fadeOut();
+                    } else if (succ.code == 4) {
+                        window.location.reload();
+                    }
+                }
+            })
+        }
     });
     //分类删除
     $('.box').find('a:nth-child(2)').on('click', function () {

@@ -1,7 +1,13 @@
 //导航栏悬浮效果
 $(function () {
-    $('.nav-left').find('li').find('a').on('click', function () {
-        $('.nav-left').find('li').find('a').css({background: 'transparent'});
+    var tab = $(".nav-main");
+    tab.mouseover(function (event) {
+        $(this).find("ul").stop();
+        $(this).find("ul").slideDown();
+
+    }).mouseout(function (event) {
+        $(this).find("ul").stop();
+        $(this).find("ul").slideUp();
     });
     //侧边导航
     $('#nav').on('click', function () {

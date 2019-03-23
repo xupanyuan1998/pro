@@ -5,20 +5,26 @@ img.ba {
     width: 100%;
     height: 100%;
 }
-
 .main {
     opacity: .5;
     float: none;
 }
-
-.navbar-brand {
-    padding: 0 15px;
-    /*background: url("../images/logo.png");*/
-}
-
 .active {
     background: #ed219bb3;
 }
 .fade.in {
     display: none;
+}
+
+.navbar-default {
+    background: none;
+    border: none;
+}
+
+navbar-nav li a {
+    text-align: center;
+}
+
+.form-group {
+    overflow: hidden;
 }

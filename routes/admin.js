@@ -1,6 +1,7 @@
 var express = require('express');
 var user = require('../models/user');
 var category = require('../models/category');
+var article = require('../models/article');
 var json = {};
 var admin = express.Router();
 //用户管理
@@ -17,14 +18,14 @@ admin.get('/userslist', function (req, res) {
 });
 //分类管理
 admin.get('/userslist/cata', function (req, res) {
-	category.find().then(function (info) {
+    category.find().sort({key: 1}).then(function (info) {
 		res.render('./admin/cata.html', {name: info});
 	})
 });
 //新增分类页面
 admin.get('/userslist/addcata', function (req, res) {
     res.render('./admin/addcata.html', {})
-})
+});
 //新增分类
 admin.post('/userslist/addcata', function (req, res) {
 	var name = req.body.name;
@@ -79,6 +80,30 @@ admin.get('/userslist/catadel', function (req, res) {
         json.code = 8;
         json.msg = '删除成功';
         res.send(json)
+    })
+});
+//新增文章页面
+admin.get('/userslist/addarticle', function (req, res) {
+    category.find().sort({_id: 1}).then(function (info) {
+        res.render('./admin/addarticle.html', {cata: info})
+    })
+});
+admin.post('/userslist/article', function (req, res) {
+    var title = req.body.title,
+        int = req.body.int,
+        content = req.body.content,
+        leibie = req.body.leibie,
+        names = req.body.names;
+    new article({
+        title: title,
+        int: int,
+        content: content,
+        leibie: leibie,
+        names: names
+    }).save().then(function (info) {
+        json.code = 6;
+        json.msg = '添加成功';
+        res.send(json);
     })
 });
 module.exports = admin;

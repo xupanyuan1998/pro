@@ -20,41 +20,39 @@
         <div class="nav-top ">
             <div class="container nav-header ">
                 <img src="../../public/images/logo.png" alt="Logo" class="logo">
-                <ul class="nav navbar-nav nav-left">
-                    <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown nav-script">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">前端<span class="caret"></span></a>
-                        <ul class="dropdown-menu web">
-                            <li></li>
-                            <li><a href="#">javascript</a></li>
-                            <li><a href="#">webpack</a></li>
-                            <li><a href="#">vue</a></li>
-                            <li><a href="#">正则</a></li>
-                            <li><a href="#">异步</a></li>
+                <div class="nav-script ">
+                    <div class="nav-main">
+                        <h4><a href="/index">首页</a></h4>
+                    </div>
+                    <div class="nav-main">
+                        <h4><a href="javascript:;"></a>前端</h4>
+                        <ul>
+                            {% for num in nav %}
+                            <li><a href="javascript:;">{{num.name}}</a></li>
+                            {% endfor%}
                         </ul>
-                    </li>
-                    <li class="dropdown ">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">文章<span class="caret"></span></a>
-                        <ul class="dropdown-menu article">
-                            <li></li>
-                            <li><a href="#">感悟</a></li>
-                            <li><a href="#">随笔</a></li>
-                            <li><a href="#">悬疑</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">打赏</a></li>
-                    <li><a href="#">留言</a></li>
-                    <li><a href="/api/user/log">登录</a></li>
-                    <li><a href="/api/user/reg">注册</a></li>
-                    <li><a href="#">找回密码</a></li>
-                </ul>
+                    </div>
+                    <div class="nav-main">
+                        <h4><a href="javascript:;">打赏</a></h4>
+                    </div>
+                    <div class="nav-main">
+                        <h4><a href="#">留言</a></h4>
+                    </div>
+                    <div class="nav-main">
+                        <h4><a href="/api/user/reg">注册</a></h4>
+                    </div>
+                    <div class="nav-main">
+                        <h4><a href="/api/user/log">登录</a></h4>
+                    </div>
+                    <div class="nav-main">
+                        <h4><a href="#">找回密码</a></h4>
+                    </div>
+                </div>
             </div><!-- /.navbar-collapse -->
         </div>
         <div class="blog-user">
-            <h1>陌上寒</h1>
-            <p>陌上寒个人微博</p>
+            <h1>{{name.username}}</h1>
+            <p>{{name.username}}个人微博</p>
         </div>
     </div>
 </div><!--头部导航-->
@@ -68,9 +66,9 @@
         {% if name.username %}
         <div class="text-center right-content  admin-page" id="log-success">
             {% if name.isAdmin %}
-            <p>您好admin ：您是管理员 <a href="/admin/userslist">点击这里进入管理页面</a></p>
+            <p>您好{{name.username}} ：您是管理员 <a href="/admin/userslist">点击这里进入管理页面</a></p>
             {% else %}
-            <p>欢迎回来 </p>
+            <p>您好 {{name.username}}：欢迎回来 </p>
             {% endif %}
             <span id="logout">退出</span>
         </div>
@@ -146,15 +144,9 @@
 <ul class="nav-side">
     <li><a class="actic" href="javascript:;">首页</a></li>
     <li><a href="javascript:;">前端</a></li>
-    <li class="con-nav"><a href="javascript:;">javascript</a></li>
-    <li class="con-nav"><a href="javascript:;">webpack</a></li>
-    <li class="con-nav"><a href="javascript:;">vue</a></li>
-    <li class="con-nav"><a href="javascript:;">正则</a></li>
-    <li class="con-nav"><a href="javascript:;">异步</a></li>
-    <li><a href="javascript:;">文章</a></li>
-    <li class="con-nav"><a href="javascript:;">感悟</a></li>
-    <li class="con-nav"><a href="javascript:;">随笔</a></li>
-    <li class="con-nav"><a href="javascript:;">悬疑</a></li>
+    {% for num in nav %}
+    <li class="con-nav"><a href="javascript:;">{{num.name}}</a></li>
+    {% endfor %}
     <li><a href="javascript:;">打赏</a></li>
     <li><a href="javascript:;">留言</a></li>
     <li><a href="/api/user/reg">注册</a></li>

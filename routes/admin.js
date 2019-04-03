@@ -91,10 +91,13 @@ admin.get('/userslist/addarticle', function (req, res) {
 admin.post('/userslist/article', function (req, res) {
     var title = req.body.title,
         int = req.body.int,
+        data = new Date().toLocaleString(),
         content = req.body.content,
         leibie = req.body.leibie,
         names = req.body.names;
+    console.log(data)
     new article({
+        data: data,
         title: title,
         int: int,
         content: content,
@@ -106,4 +109,62 @@ admin.post('/userslist/article', function (req, res) {
         res.send(json);
     })
 });
+//文章管理
+admin.get('/userslist/article', function (req, res) {
+    var limit = 10;
+    var page = Number(req.query.page) || 1;
+    article.countDocuments().then(function (info) {
+        var pages = Math.ceil(info / limit);
+        var skip = (page - 1) * limit;
+        article.find().sort({'data': -1}).limit(limit).skip(skip).then(function (info2) {
+            category.find().then(function (newinfo) {
+                res.render('./admin/article.html', {
+                    article: info2,
+                    page: page,
+                    pages: pages,
+                    limit: limit,
+                    info: info,
+                    cata: newinfo
+                })
+            })
+        })
+    })
+});
+//文章修改
+admin.get('/userslist/article/xiugai', function (req, res) {
+    var id = req.query.id;
+    article.findOne({
+        _id: id
+    }).then(function (info) {
+        res.send(info)
+    })
+});
+admin.post('/userslist/article/xiugais', function (req, res) {
+    var id = req.body.id,
+        title = req.body.title,
+        int = req.body.int,
+        leibie = req.body.leibie,
+        names = req.body.names,
+        content = req.body.content;
+    article.updateOne({_id: id}, {
+        title: title,
+        int: int,
+        leibie: leibie,
+        names: names,
+        content: content
+    }).then(function (info) {
+        json.code = 9;
+        json.msg = '修改成功';
+        res.send(json)
+    })
+});
+//文章删除
+admin.get('/userslist/artlic/del', function (req, res) {
+    var id = req.query.id;
+    article.deleteOne({_id: id}).then(function (info) {
+        json.code = 5;
+        json.msg = '删除成功';
+        res.send(json);
+    })
+})
 module.exports = admin;

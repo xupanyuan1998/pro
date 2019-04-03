@@ -8,7 +8,7 @@ var article = new schema({
     },
     //时间
     data: {
-        type: Date,
+        type: String,
         default: new Date()
     },
     //评论
@@ -40,6 +40,11 @@ var article = new schema({
     names: {
         type: String,
         default: ''
+    },
+    //点赞
+    wonder: {
+        type: Number,
+        default: 0
     }
 });
 module.exports = article;

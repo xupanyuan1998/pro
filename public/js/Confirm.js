@@ -1,3 +1,4 @@
+
 /*
  * 使用说明:
  * window.wxc.Pop(popHtml, [type], [options])
@@ -10,17 +11,47 @@
  * 3. window.wxc.xcConfirm("请输入","input",{onOk:function(){}})
  * 4. window.wxc.xcConfirm("自定义",{title:"自定义"})
  */
-$(function () {
+(function ($) {
     window.wxc = window.wxc || {};
     window.wxc.xcConfirm = function (popHtml, type, options) {
         var btnType = window.wxc.xcConfirm.btnEnum;
         var eventType = window.wxc.xcConfirm.eventEnum;
         var popType = {
-            confirm: {
+            info: {
                 title: "",
+                icon: "0 0",//蓝色i
+                btn: btnType.ok
+            },
+            success: {
+                title: "成功",
+                icon: "0 -48px",//绿色对勾
+                btn: btnType.ok
+            },
+            error: {
+                title: "错误",
+                icon: "-48px -48px",//红色叉
+                btn: btnType.ok
+            },
+            confirm: {
+                title: "提示",
                 icon: "-48px 0",//黄色问号
                 btn: btnType.okcancel
             },
+            warning: {
+                title: "警告",
+                icon: "0 -96px",//黄色叹号
+                btn: btnType.okcancel
+            },
+            input: {
+                title: "输入",
+                icon: "",
+                btn: btnType.ok
+            },
+            custom: {
+                title: "",
+                icon: "",
+                btn: btnType.ok
+            }
         };
         var itype = type ? type instanceof Object ? type : popType[type] || {} : {};//格式化输入的参数:弹窗类型
         var config = $.extend(true, {
@@ -34,25 +65,25 @@ $(function () {
             onClose: $.noop//弹窗关闭的回调,返回触发事件
         }, itype, options);
 
-        var $txt = $("<p></p>").html(popHtml);//弹窗文本dom
-        var $tt = $("<span></span>").addClass("tt").text(config.title);//标题
+        var $txt = $("<p>").html(popHtml);//弹窗文本dom
+        var $tt = $("<span>").addClass("tt").text(config.title);//标题
         var icon = config.icon;
-        var $icon = icon ? $("<div></div>").addClass("bigIcon").css("backgroundPosition", icon) : "";
+        var $icon = icon ? $("<div>").addClass("bigIcon").css("backgroundPosition", icon) : "";
         var btn = config.btn;//按钮组生成参数
 
         var popId = creatPopId();//弹窗索引
 
-        var $box = $("<div></div>").addClass("xcConfirm");//弹窗插件容器
-        var $layer = $("<div></div>").addClass("xc_layer");//遮罩层
-        var $popBox = $("<div></div>").addClass("popBox");//弹窗盒子
-        var $ttBox = $("<div></div>").addClass("ttBox");//弹窗顶部区域
-        var $txtBox = $("<div></div>").addClass("txtBox");//弹窗内容主体区
-        var $btnArea = $("<div></div>").addClass("btnArea");//按钮区域
+        var $box = $("<div>").addClass("xcConfirm");//弹窗插件容器
+        var $layer = $("<div>").addClass("xc_layer");//遮罩层
+        var $popBox = $("<div>").addClass("popBox");//弹窗盒子
+        var $ttBox = $("<div>").addClass("ttBox");//弹窗顶部区域
+        var $txtBox = $("<div>").addClass("txtBox");//弹窗内容主体区
+        var $btnArea = $("<div>").addClass("btnArea");//按钮区域
 
-        var $ok = $("<a></a>").addClass("sgBtn").addClass("ok").text("确定");//确定按钮
-        var $cancel = $("<a></a>").addClass("sgBtn").addClass("cancel").text("取消");//取消按钮
+        var $ok = $("<a>").addClass("sgBtn").addClass("ok").text("确定");//确定按钮
+        var $cancel = $("<a>").addClass("sgBtn").addClass("cancel").text("取消");//取消按钮
         var $input = $("<input>").addClass("inputBox");//输入框
-        var $clsBtn = $("<a></a>").addClass("clsBtn");//关闭按钮
+        var $clsBtn = $("<a>").addClass("clsBtn");//关闭按钮
 
         //建立按钮映射关系
         var btns = {
@@ -137,7 +168,7 @@ $(function () {
 
         //生成按钮组
         function creatBtnGroup(tp) {
-            var $bgp = $("<div></div>").addClass("btnGroup");
+            var $bgp = $("<div>").addClass("btnGroup");
             $.each(btns, function (i, n) {
                 if (btnType[i] == (tp & btnType[i])) {
                     $bgp.append(n);
@@ -181,4 +212,5 @@ $(function () {
         input: "input",
         custom: "custom"
     };
-});
+
+})(jQuery);

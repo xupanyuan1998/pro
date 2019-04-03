@@ -275,7 +275,7 @@ textarea {
     background: url("../images/calendar.png");
 }
 
-.content-con h5 b.review {
+.content-con h5 b.reviews {
     background: url("../images/review.png");
 }
 
@@ -301,11 +301,17 @@ textarea {
     padding-bottom: 50px;
 }
 
+.content-con a {
+    text-decoration: none;
+}
 .right-content {
     position: relative;
     padding-bottom: 40px;
 }
 
+.message .fl {
+    padding-left: 15px;
+}
 .right-content h4 {
     color: #8a8793;
     font-size: 16px;

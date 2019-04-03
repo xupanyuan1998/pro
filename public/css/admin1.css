@@ -25,6 +25,28 @@ navbar-nav li a {
     text-align: center;
 }
 
+#placehoder {
+    text-align: center;
+    font-size: 25px;
+    color: #d60ea3;
+    height: 30px;
+}
 .form-group {
     overflow: hidden;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.first {
+    margin-top: 40px;
+}
+
+#content-1 table td {
+    height: 50px;
+    width: 16%;
+    overflow: hidden;
+    display: block;
+    float: left;
 }

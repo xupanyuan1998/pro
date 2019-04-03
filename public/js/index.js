@@ -1,11 +1,18 @@
 //导航栏悬浮效果
 $(function () {
     var tab = $(".nav-main");
-    tab.mouseover(function (event) {
+    /*  tab.mouseover(function (event) {
+          $(this).find("ul").stop();
+          $(this).find("ul").slideDown();
+
+      }).mouseout(function (event) {
+          $(this).find("ul").stop();
+          $(this).find("ul").slideUp();
+      });*/
+    tab.hover(function () {
         $(this).find("ul").stop();
         $(this).find("ul").slideDown();
-
-    }).mouseout(function (event) {
+    }, function () {
         $(this).find("ul").stop();
         $(this).find("ul").slideUp();
     });
@@ -33,6 +40,43 @@ $(function () {
         $('html ,body').animate({scrollTop: 0}, 300);
         return false;
     });
+    //分类创建
+    $('#nav-d').find('a').on('click', function () {
+        $('#contents').html();
+        $.ajax({
+            url: '/index/cate',
+            type: 'post',
+            data: {
+                id: $(this).attr('id')
+            },
+            success: function (res) {
+                $('#contents').html('');
+                for (var i = 0; i < res.length; i++) {
+                    var odiv = $('<div class="content-con row"><div class="col-lg-5 fl col-xs-12 col-xm-12"><img class=" col-lg-12 col-xs-12 col-xm-12"src="../../public/images/web-2.png" alt="logo"></div>\n' +
+                        '    <div class=" fl col-lg-1 hidden-xs hidden-xm"></div>\n' +
+                        '    <div class="content-con-right col-lg-7  fl  col-xs-12 col-xm-12">\n' +
+                        '        <h4><strong class="fl hidden-xs hidden-xm"> <b >' + res[i].names + '</b><em></em></strong><a\n' +
+                        '                href="javascript:;">' + res[i].title + '</a>\n' +
+                        '        </h4>\n' +
+                        '        <p>' + res[i].int + '</p>\n' +
+                        '    </div>\n' +
+                        '    <h5 class="col-lg-12 col-xs-12 col-xm-12">\n' +
+                        '        <b class=" calendar "></b>\n' +
+                        '        <span>' + res[i].data + '</span>\n' +
+                        '        <b class="reviews"></b>\n' +
+                        '        <span>' + res[i].comments.length + '条评论</span>\n' +
+                        '        <b class="read"></b>\n' +
+                        '        <span>' + res[i].read + '人阅读</span>\n' +
+                        '        <b class="praise"></b>\n' +
+                        '        <span>' + res[i].wonder + '人点赞</span>\n' +
+                        '        <a href="/index/content?id=' + res[i]._id + '">阅读全文</a>\n' +
+                        '    </h5>\n' +
+                        '</div>');
+                    $('#contents').prepend(odiv);
+                }
+            }
+        })
+    })
     //注册
     $('#reg').on('click', function () {
         var admin = $('#admin').val();
@@ -41,7 +85,7 @@ $(function () {
             repassword = $('#repassword').val();
         var reg = /^[a-zA-Z0-9_]{4,8}$/;//用户名正则规则
         var regemail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;//邮箱正则规则
-        var regpassword = /^\d{3,6}.*$/;//密码正则规则.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*? ])
+        var regpassword = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{10,20}$/;// 表示长度为10-20位包含数字、字母、特殊字符的密码 .表示匹配
         if (!reg.test(admin)) {
             $('#placeadmin').fadeIn().fadeOut().fadeIn().fadeOut();
         } else if (!regemail.test(email)) {
@@ -51,24 +95,6 @@ $(function () {
         } else if (password != repassword) {
             $('#placerepassword').fadeIn().fadeOut().fadeIn().fadeOut();
         } else {
-            /*$.ajax({
-                url:'/api/reg',
-                type:'post',/!*请求的类型*!/
-                dataType:'json',/!*发送请求的格式*!/
-                data:{
-                    username:admin,
-                    email :email,
-                    password:password,
-                    repassword:repassword,
-                    date:new Date().getTime()
-                },
-                success:function (suc) {
-                    console.log(suc)
-                },
-                error:function (err) {
-                    console.log(err)
-                }
-            });*/
             $.ajax({
                 type: 'post',/*请求的类型*/
                 dataType: 'json',/*发送请求的格式*/
@@ -126,7 +152,7 @@ $(function () {
     //退出
     $('#logout').on('click', function () {
         $.ajax({
-            url: 'api/user/logout',
+            url: '/api/user/logout',
             success: function (suc) {
                 if (suc.code === 6) {
                     window.location.reload();

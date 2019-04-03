@@ -9,6 +9,7 @@ var parse = require('body-parser');
 var mongoose = require('mongoose');
 //引用cookie
 var cookie = require('cookies');
+var multer = require('multer');
 //引用user数据库
 var user = require('./models/user');
 

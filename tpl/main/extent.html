@@ -6,13 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>首页</title>
-    <link rel="stylesheet" href="public/css/bootstrap.css">
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <script src="public/js/jquery.1.10.2.min.js"></script>
-    <script src="public/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="public/css/public.css">
-    <script src="public/js/index.js"></script>
-    <link rel="stylesheet" href="public/css/public-head.css">
+    <link rel="stylesheet" href="../public/css/bootstrap.css">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <script src="../public/js/jquery.1.10.2.min.js"></script>
+    <script src="../public/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../public/css/public.css">
+    <script src="../public/js/jquery.cookie.js"></script>
+    {% block css %}
+    {% endblock %}
+    <script src="../public/js/index.js"></script>
+    <link rel="stylesheet" href="../public/css/public-head.css">
 </head>
 <body>
 <div>
@@ -23,29 +26,20 @@
                 <div class="nav-script ">
                     <div class="nav-main">
                         <h4><a href="/index">首页</a></h4>
-                    </div>
-                    <div class="nav-main">
-                        <h4><a href="javascript:;"></a>前端</h4>
-                        <ul>
+                        <ul id="nav-d">
                             {% for num in nav %}
-                            <li><a href="javascript:;">{{num.name}}</a></li>
+                            <li><a href="javascript:;" id="{{num._id.toString()}}">{{num.name}}</a></li>
                             {% endfor%}
                         </ul>
                     </div>
                     <div class="nav-main">
-                        <h4><a href="javascript:;">打赏</a></h4>
-                    </div>
-                    <div class="nav-main">
-                        <h4><a href="#">留言</a></h4>
+                        <h4><a href="/index/rewards">打赏</a></h4>
                     </div>
                     <div class="nav-main">
                         <h4><a href="/api/user/reg">注册</a></h4>
                     </div>
                     <div class="nav-main">
                         <h4><a href="/api/user/log">登录</a></h4>
-                    </div>
-                    <div class="nav-main">
-                        <h4><a href="#">找回密码</a></h4>
                     </div>
                 </div>
             </div><!-- /.navbar-collapse -->
@@ -57,7 +51,7 @@
     </div>
 </div><!--头部导航-->
 <div class="container content-left">
-    <div class="fl col-lg-7 ">
+    <div class="fl col-lg-7  col-md-12 col-xs-12 col-xm-12 col-sm-12">
         {% block content-left %}
         {% endblock %}
     </div><!--左边内容-->
@@ -148,10 +142,8 @@
     <li class="con-nav"><a href="javascript:;">{{num.name}}</a></li>
     {% endfor %}
     <li><a href="javascript:;">打赏</a></li>
-    <li><a href="javascript:;">留言</a></li>
     <li><a href="/api/user/reg">注册</a></li>
     <li><a href="/api/user/log">登录</a></li>
-    <li><a href="javascript:;">找回密码</a></li>
 </ul><!-- 小屏幕侧边导航-->
 <div class="icn">
     <div class="int hidden-xs hidden-xm"><img src="../../public/images/int.png" alt="int"></div>
@@ -162,7 +154,6 @@
     <div class="top"><img src="../../public/images/top.png" alt="top"></div>
 </div>
 <div id="nav" class="hidden-md hidden-lg hidden-xm hidden-sm"></div>
-
 <div class="footer container-fluid">
     <div class="footer-top"><p><span></span><span></span></p></div>
     <p class="text-center">COPYRIGHT 2019 陌上寒 .ALLRIGHTS RESERVEND</p>

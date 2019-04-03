@@ -1,298 +1,115 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>内页</title>
-    <link rel="stylesheet" href="../../public/css/bootstrap.css">
-    <link rel="stylesheet" href="../../public/css/bootstrap.min.css">
-    <script src="../../public/js/jquery.1.10.2.min.js"></script>
-    <script src="../../public/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="../../public/css/neiye.css">
-    <script src="../../public/js/index.js"></script>
-    <link rel="stylesheet" href="../../public/css/public-head.css">
-</head>
-<body>
-<div>
-    <div class="nav-top hidden-xs hidden-xm">
-        <div class="nav-top ">
-            <div class="container nav-header ">
-                <img src="../../public/images/logo.png" alt="Logo" class="logo">
-                <ul class="nav navbar-nav nav-left">
-                    <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown nav-script">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">前端<span class="caret"></span></a>
-                        <ul class="dropdown-menu web">
-                            <li></li>
-                            <li><a href="#">javascript</a></li>
-                            <li><a href="#">webpack</a></li>
-                            <li><a href="#">vue</a></li>
-                            <li><a href="#">正则</a></li>
-                            <li><a href="#">异步</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown ">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">文章<span class="caret"></span></a>
-                        <ul class="dropdown-menu article">
-                            <li></li>
-                            <li><a href="#">感悟</a></li>
-                            <li><a href="#">随笔</a></li>
-                            <li><a href="#">悬疑</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">打赏</a></li>
-                    <li><a href="#">留言</a></li>
-                    <li><a href="#">注册</a></li>
-                    <li><a href="#">找回密码</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div>
-        <div class="blog-user">
-            <h1>陌上寒</h1>
-            <p>陌上寒个人微博</p>
-        </div>
-    </div>
-</div><!--头部导航-->
-<div class="container content-left">
-    <div class="fl  content-cen col-lg-7 col-md-12 col-xs-12 col-xm-12 col-sm-12 ">
-        <div class="neiye">
-            <h3 class="biaoti">循环中的异步&&循环中的闭包</h3>
-            <div class="warp-con"><h5><b class="rili"></b><span>2019年3月12日</span><b class="view"></b><span>2条评论</span><b
-                    class="read"></b><span>193次阅读</span><b class="zan"></b><span>4人点赞</span></h5></div>
-            <p class="int-p">在这之前先要了解一下</p>
-            <h4 id="1"><b></b> <span>for循环中let和var的区别</span></h4>
-            <div class="mulu">
-                <h5>目录</h5>
-                <ul>
-                    <li><a href="#1">1.for循环中let 和var的区别</a></li>
-                    <li><a href="#2">2.循环中的异步</a></li>
-                    <li class="mulu-1"><a href="#2.1">2.1setTimeout(func,time)函数运行机制</a></li>
-                    <li class="mulu-1"><a href="2.2">2.2一个需求，一个数组array[1,2,3,4,5],循环打印，间隔1秒</a></li>
-                    <li class="mulu-2"><a href="2.2.1">2.2.1方式一 放弃for循环，使用setInterval</a></li>
-                    <li class="mulu-2"><a href="2.2.2">2.2.2方式二，引入全局变量</a></li>
-                    <li class="mulu-2"><a href="2.2.3">2.2.3方式三 for循环配合setTimeout（常规思路，不赘述，面试必备技能）</a></li>
-                    <li class="mulu-2"><a href="2.2.4">2.2.4方式四，通过闭包实现</a></li>
-                    <li><a href="#3">3.总结</a></li>
-                </ul>
-            </div>
-            <p class="int-p">var 是函数级作用域或者全局作用域，let是块级作用域</p>
-            <p class="int-p">看一个例子</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">foo函数下的index输出5，全局下的index不存在</p>
-            <p class="int-p">现在我们把var 换为let</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">报错了，index不在foo函数作用域下，当然肯定也不会再全局下</p>
-            <p class="int-p">因为var和let的这个区别（当然var和let的区别不止于此）所以导致了下面的这个问题</p>
-            <p class="int-p">关于var的</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">看下输出</p>
-            <div class="daima">
-                <img src="../../public/images/shuchu.png" alt="">
-            </div>
-            <p class="int-p">关于let的</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">看下输出</p>
-            <div class="daima">
-                <img src="../../public/images/dama1.png" alt="">
-            </div>
-            <p class="int-p">因为var和let 在作用域上的差别，所以到这了上面的问题</p>
-            <p class="int-p">使用var
-                定义变量的时候，作用域是在foo函数下，在for循环外部，在整个循环中是全局的，每一次的循环实际上是为index赋值，循环一次赋值一次，5次循环完成，index最后的结果赋值就为5；就是被最终赋值的index，就是5；</p>
-            <p class="int-p">
-                let的作用局的块级作用局，index的作用域在for循环内部，即每次循环的index的作用域就是本次循环，下一次循环重新定义变量index；所以index每次循环的输出都不同</p>
-            <p class="int-p">这里还有另外一个问题，setTimeout，这是一个异步，这就是我们今天要讨论的</p>
-            <h4 id="2"><b></b> <span>循环中的异步</span></h4>
-            <h3 id="2.1">setTimeout(func,time)函数运行机制</h3>
-            <p class="int-p">
-                setTimeout(func,time)是在time（毫秒单位）时间后执行func函数。浏览器引擎按顺序执行程序，遇到setTimeout会将func函数放到执行队列中，等到主程序执行完毕之后，才开始从执行队列（队列中可能有多个待执行的func函数）中按照time延时时间的先后顺序取出来func并执行。即使time=0,也会等主程序运行完之后，才会执行。</p>
-            <h3 id="2.2">setTimeout(func,time)函数运行机制</h3>
-            <p class="int-p">上面的let是循环打印了12345，但是不是间隔1s打印的，是在foo函数执行1s后，同时打印的</p>
-            <h6 id="2.2.1">方式一 放弃for循环，使用setInterval</h6>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">
-                我们上面说到，当for循环遇到了var，变量index的作用域在foo函数下，循环一次赋值一次，5次循环完成，index最后的结果赋值就为5；就是被最终赋值的index，就是5；</p>
-            <h6 id="2.2.2">方式二，引入全局变量</h6>
-            <p class="int-p">代码执行顺序是，先同步执行for循环，再执行异步队列，在for循环执行完毕后，异步队列开始执行之前，index经过for循环的处理，变成了5。</p>
-            <p class="int-p">所以我们引入一个全局变量j，使j在for循环执行完毕后，异步队列开始执行之前，依然是0，在异步执行时进行累加</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <h6 id="2.2.3">方式三 for循环配合setTimeout（常规思路，不赘述，面试必备技能）</h6>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <h6 id="2.2.4">方式四，通过闭包实现</h6>
-            <p class="int-p">
-                我们对上面的问题再次分析，for循环同步执行，在for循环内部遇到了setTimeout，setTimeout是异步执行的，所以加入了异步队列，当同步的for循环执行完毕后，再去执行异步队列，setTimeout中有唯一的一个参数数index
-                方式三可行，是因为let是块级作用域，每次for执行都会创建新的变量index，for循环执行完毕后，异步执行之前，创建了5个独立的作用域，5个index变量，分别是0，1，2，3，4，相互独立，互不影响，输出了预期的结果
-                如果说每次循环都会生成一个独立的作用域用来保存index，问题就会得到解决，所以，我们通过闭包来实现</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">setTimeout中的匿名回调函数中引用了函数fun中的局部变量j，所以当fun执行完毕后，变量j不会被释放，这就形成了闭包
-                当然我们可以对此进行一下优化</p>
-            <div class="daima">
-                <img src="../../public/images/daima.jpg" alt="">
-            </div>
-            <p class="int-p">将foo函数改为匿名的立即执行函数，结果是相同的</p>
-            <h4 id="3"><b></b> <span>总结</span></h4>
-            <p class="int-p">for循环本身是同步执行的，当在for循环中遇到了异步逻辑，异步就会进入异步队列，当for循环执行结束后，才会执行异步队列
-                当异步函数依赖于for循环中的索引时（一定是存在依赖关系的，不然不会再循环中调动异步函数）要考虑作用域的问题，
-                在ES6中使用let是最佳的选择，
-                当使用var时，可以考虑再引入一个索引来替代for循环中的索引，新的索引逻辑要在异步中处理
-                也可以使用闭包，模拟实现let
-                在实际开发过程中，循环调用异步函数，比demo要复杂，可能还会出现if和else判断等逻辑，具体的我们下次再续</p>
-
-        </div>
-        <button class="dianzan"><b></b><span>点赞</span></button>
-        <div class="message">
-            <div>
-                <img src="../../public/images/tuxiang.jpg" alt="">
-                <div class="fl">
-                    <h4>竹鼠煮熟术</h4>
-                    <span>2019年3月13日14:22</span>
-                </div>
-            </div>
-            <p>模板可以分享一下吗？</p>
-        </div>
-        <div class="message">
-            <div>
-                <img src="../../public/images/tuxiang.jpg" alt="">
-                <div class="fl">
-                    <h4>竹鼠煮熟术</h4>
-                    <span>2019年3月13日14:22</span>
-                </div>
-            </div>
-            <p>模板可以分享一下吗？</p>
-        </div>
-        <div class="review">
+{% extends 'extent.html' %}
+{% block css %}
+<link rel="stylesheet" href="../public/css/neiye.css">
+<link rel="stylesheet" href="../public/css/Confirm.css">
+<script src="../../public/js/Confirm.js"></script>
+{% endblock %}
+{% block content-left %}
+<div id="contents">
+    <div>
+        {{ content.content }}
+        <button class="dianzan" user="{{name.username}}"><b></b><span>点赞({{ content.wonder }})</span></button>
+        {% if name.username %}
+        <div class="review" last="{{content._id.toString()}}">
             <h4>发表评论</h4>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="content" id="conments" cols="30" rows="10"></textarea>
+            <p></p>
             <button type="button" id="myButton" class="btn btn-primary">
                 发表评论
             </button>
         </div>
-    </div><!--左边内容-->
-    <div class="fl col-lg-1   hidden-md hidden-xs hidden-xm hidden-sm"></div>
-    <div class="fl col-lg-3  hidden-md hidden-xs hidden-xm hidden-sm">
-        <div class="text-center right-content ">
-            <h4 class="text-center">用户您好！请先登录！</h4>
-            <div class="admin">
-                <a href="javascript:;">登录</a>
-                <a href="javascript:;">注册</a>
+        {% else %}
+        <p class="text-center noplace">您还没有登录不能发表评论！ 请登录</p>
+        {% endif %}
+        {% for num in content.comments %}
+        <div class="message">
+            <div class="tu-top">
+                <img src="../../public/images/tuxiang.jpg" alt="">
+                <div class="fl">
+                    <h4>{{ num.username }}</h4>
+                    <span>{{ num.time.toLocaleString() }}</span>
+                </div>
             </div>
-        </div>
-        <div class="music">
-            <h4><b>音乐</b></h4>
-            <div class="music-content">
-                <audio src="../../public/images/music.mp3" controls style="width: 100%"></audio>
+            <p cont="{{num.date}}">{{num.comment}}</p>
+            <div>
+                <button type="button" class="btn btn-warning">删除</button>
             </div>
+            <input type="text">
         </div>
-        <div class="music">
-            <h4><b>站内搜索</b></h4>
-            <div class="music-content">
-                <input type="text" placeholder="Search">
-            </div>
-        </div>
-        <div class="music">
-            <h4><b>微信公众号</b></h4>
-            <div class="music-content">
-                <img src="../../public/images/public.png" alt="">
-            </div>
-        </div>
-        <div class="music">
-            <h4><b>标签聚合</b></h4>
-            <div class="music-content">
-                <a href="javascript:;" class="btn btn-default">规范</a>
-                <a href="javascript:;" class="btn btn-default">工具</a>
-                <a href="javascript:;" class="btn btn-default">异步</a>
-                <a href="javascript:;" class="btn btn-default">ES6</a>
-                <a href="javascript:;" class="btn btn-default">构造函数</a>
-                <a href="javascript:;" class="btn btn-default">原型</a>
-                <a href="javascript:;" class="btn btn-default">排序</a>
-                <a href="javascript:;" class="btn btn-default">对象</a>
-                <a href="javascript:;" class="btn btn-default">阅读感悟</a>
-                <a href="javascript:;" class="btn btn-default">随笔</a>
-                <a href="javascript:;" class="btn btn-default">THIS</a>
-                <a href="javascript:;" class="btn btn-default">悬疑推理</a>
-                <a href="javascript:;" class="btn btn-default">JAVASCRIPT</a>
-                <a href="javascript:;" class="btn btn-default">前端</a>
-                <a href="javascript:;" class="btn btn-default">WEBPACK</a>
-                <a href="javascript:;" class="btn btn-default">VUE</a>
-                <a href="javascript:;" class="btn btn-default">熊猫笔记</a>
-                <a href="javascript:;" class="btn btn-default">作用域</a>
-                <a href="javascript:;" class="btn btn-default">面试</a>
-                <a href="javascript:;" class="btn btn-default">正则</a>
-            </div>
-        </div>
-        <div class="music">
-            <h4><b>标签聚合</b></h4>
-            <div class="music-content">
-                <p>通知：本站将在2019年3月1日取消所有友链，请知晓</p>
-                <ul class="fl">
-                    <li><a href="javascript:;">搬瓦工</a></li>
-                    <li><a href="javascript:;">何海宝的博客</a></li>
-                    <li><a href="javascript:;">何海宝的博客</a></li>
-                    <li><a href="javascript:;">何海宝的博客</a></li>
-                    <li><a href="javascript:;">何海宝的博客</a></li>
-                </ul>
-                <ul class="fl">
-                    <li><a href="javascript:;">建网站9元全包</a></li>
-                    <li><a href="javascript:;">建网站9元全包</a></li>
-                    <li><a href="javascript:;">建网站9元全包</a></li>
-                    <li><a href="javascript:;">建网站9元全包</a></li>
-                    <li><a href="javascript:;">建网站9元全包</a></li>
-                </ul>
-            </div>
-        </div>
-    </div><!--右边内容-->
-    <div class="fl col-lg-1  hidden-md hidden-xs hidden-xm hidden-sm"></div>
-</div><!--内容部分-->
-<ul class="nav-side">
-    <li><a class="actic" href="javascript:;">首页</a></li>
-    <li><a href="javascript:;">前端</a></li>
-    <li class="con-nav"><a href="javascript:;">javascript</a></li>
-    <li class="con-nav"><a href="javascript:;">webpack</a></li>
-    <li class="con-nav"><a href="javascript:;">vue</a></li>
-    <li class="con-nav"><a href="javascript:;">正则</a></li>
-    <li class="con-nav"><a href="javascript:;">异步</a></li>
-    <li><a href="javascript:;">文章</a></li>
-    <li class="con-nav"><a href="javascript:;">感悟</a></li>
-    <li class="con-nav"><a href="javascript:;">随笔</a></li>
-    <li class="con-nav"><a href="javascript:;">悬疑</a></li>
-    <li><a href="javascript:;">打赏</a></li>
-    <li><a href="javascript:;">留言</a></li>
-    <li><a href="javascript:;">注册</a></li>
-    <li><a href="javascript:;">找回密码</a></li>
-</ul><!-- 小屏幕侧边导航-->
-<div class="icn">
-    <div class="int hidden-xs hidden-xm"><img src="../../public/images/int.png" alt="int"></div>
-    <div class="wechat hidden-xs hidden-xm">
-        <img src="../../public/images/wechat.png" alt="wechat">
-        <img class="card" src="../../public/images/public.png" alt="">
+        {% endfor %}
     </div>
-    <div class="top"><img src="../../public/images/top.png" alt="top"></div>
 </div>
-<div id="nav" class="hidden-md hidden-lg hidden-xm hidden-sm"></div>
+<script>
+    var url = window.location.href;
+    var aa = url.indexOf('=');
+    var id = url.substring(aa + 1);
+    $('.dianzan').on('click', function () {
+        var url = window.location.href;
+        var aa = url.indexOf('=');
+        var id = url.substring(aa + 1);
+        $.ajax({
+            url: '/index/neiye/wonder',
+            type: 'get',
+            data: {
+                id: id
+            },
+            success: function (res) {
+                $('.dianzan span').html('点赞(' + res.wonder + ')')
+            }
+        })
+    });
+    //评论
+    $('.review #myButton').on('click', function () {
+        var date = new Date().getTime();
+        var did = parseInt(date)
+        if ($('.review textarea').val() === '') {
+            $('.review p').html('评论内容不能为空').css({background: '#eee'})
+        } else {
+            $.ajax({
+                url: '/index/neiye/conments',
+                type: 'get',
+                data: {
+                    id: id,
+                    value: $('.review textarea').val(),
+                    date: did
+                },
+                success: function (res) {
+                    if (res.code === 1) {
+                        window.location.reload()
+                    }
+                }
 
-<div class="footer container-fluid">
-    <div class="footer-top"><p><span></span><span></span></p></div>
-    <p class="text-center">COPYRIGHT 2019 陌上寒 .ALLRIGHTS RESERVEND</p>
-    <p class="text-center">京ICP备16036924号</p>
-</div>
-</body>
-</html>
+            })
+        }
+    });
+    //评论删除
+    $('.message').find('button:nth-child(1)').on('click', function () {
+        var date = $(this).parents('.message').find('p').attr('cont');
+        var id = $('.review').attr('last');
+        console.log($('.dianzan').attr('user'), $(this).parents('.message').find('h4').html())
+        if ($('.dianzan').attr('user') === $(this).parents('.message').find('h4').html()) {
+            var txt = '您确定要删除吗？';
+            var ok = window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.confirm, {
+                onOk: function () {
+                    $.ajax({
+                        url: '/index/commentsdel',
+                        type: 'get',
+                        data: {
+                            date: date,
+                            id: id
+                        },
+                        success: function (res) {
+                            if (res.ok === 1) {
+                                window.location.reload();
+                            }
+                        }
+                    })
+                }
+            });
+        } else {
+            var txt = "您不能删除此条评论";
+            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+        }
+    });
+</script>
+{% endblock %}
